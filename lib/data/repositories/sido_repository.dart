@@ -17,8 +17,8 @@ class SidoRepository extends SidoRepositoryContract {
   });
 
   @override
-  Future<Either<Failure, Usuario>> getUsuarioContexto() {
-    // TODO: implement getUsuarioContexto
+  Future<Either<Failure, Usuario>> getEmpleadoContexto() {
+
     throw UnimplementedError();
     
 

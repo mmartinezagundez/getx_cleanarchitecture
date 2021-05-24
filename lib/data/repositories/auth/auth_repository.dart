@@ -3,6 +3,7 @@ import 'package:getx_cleanarchitecture/core/error/exceptions.dart';
 import 'package:getx_cleanarchitecture/core/error/failures.dart';
 import 'package:getx_cleanarchitecture/data/datasource/auth/auth_datasource_contract.dart';
 import 'package:getx_cleanarchitecture/domain/entities/auth/login_request.dart';
+import 'package:getx_cleanarchitecture/domain/entities/usuario.dart';
 import 'package:getx_cleanarchitecture/domain/repositories/auth/auth_repository_contract.dart';
 
 class AuthRepository extends AuthRepositoryContract {
@@ -20,7 +21,7 @@ class AuthRepository extends AuthRepositoryContract {
     try {
       
       /* Se hace el login mediante el authRemoteDataSource */
-      final loginResponse = await authDataSource.login(loginRequest.login, loginRequest.password);     
+      await authDataSource.login(loginRequest.login, loginRequest.password);     
 
       return Right(true);
     } 
@@ -34,9 +35,21 @@ class AuthRepository extends AuthRepositoryContract {
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
+  Future<void> logout() {    
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, Usuario>> getUsuarioContexto() async {
+    
+    final usuario = await authDataSource.getUsuarioId();
+
+    if (usuario != null) {
+      return Right(Usuario(usuarioId: usuario));      
+    } else {
+      return Left(UsuarioContextoNotLoggedFailure());
+    }
+
   }
 
 

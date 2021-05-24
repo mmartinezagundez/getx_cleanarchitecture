@@ -18,3 +18,13 @@ class LoginFailure extends Failure {
   @override
   List<Object> get props => [];
 }
+
+class UsuarioContextoNotLoggedFailure extends Failure {
+  @override
+  List<Object> get props => [];
+}
+
+class LoginRequiredFailure extends Failure {
+  @override
+  List<Object> get props => [];
+}

@@ -6,6 +6,6 @@ import 'package:getx_cleanarchitecture/domain/entities/usuario.dart';
 abstract class SidoRepositoryContract {     
   
   /* Usuario */
-  Future<Either<Failure, Usuario>> getUsuarioContexto();  
+  Future<Either<Failure, Usuario>> getEmpleadoContexto();  
 
 }

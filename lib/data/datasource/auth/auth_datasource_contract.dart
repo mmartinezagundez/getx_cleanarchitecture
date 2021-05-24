@@ -7,5 +7,7 @@ abstract class AuthDataSourceContract {
   //Future<RefreshLoginResponseModel> refreshToken();
 
   Future<String?> getToken();
-  
+
+  Future<String?> getUsuarioId();
+
 }
