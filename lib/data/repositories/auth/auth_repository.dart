@@ -29,7 +29,7 @@ class AuthRepository extends AuthRepositoryContract {
       return Right(false);
     }
     on LoginException {
-      return Left(ServerFailure());
+      return Left(ServerFailure(""));
     }
 
   }
@@ -47,7 +47,7 @@ class AuthRepository extends AuthRepositoryContract {
     if (usuario != null) {
       return Right(Usuario(usuarioId: usuario));      
     } else {
-      return Left(UsuarioContextoNotLoggedFailure());
+      return Left(UsuarioContextoNotLoggedFailure("No existe usuario logado."));
     }
 
   }

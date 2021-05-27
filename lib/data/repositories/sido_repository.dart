@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:getx_cleanarchitecture/core/error/failures.dart';
 import 'package:getx_cleanarchitecture/data/datasource/auth/auth_datasource_contract.dart';
 import 'package:getx_cleanarchitecture/data/datasource/remote/sido_remote_datasource_contract.dart';
+import 'package:getx_cleanarchitecture/domain/entities/sido/empleados/empleado.dart';
 import 'package:getx_cleanarchitecture/domain/entities/usuario.dart';
 import 'package:getx_cleanarchitecture/domain/repositories/sido_repository_contract.dart';
 
@@ -9,11 +10,11 @@ class SidoRepository extends SidoRepositoryContract {
 
   /* DataSources */
   final SidoRemoteDataSourceContract sidoRemoteDataSource;
-  final AuthDataSourceContract authDataSourceContract;  
+  final AuthDataSourceContract authDataSource;  
 
   SidoRepository({
     required this.sidoRemoteDataSource,
-    required this.authDataSourceContract
+    required this.authDataSource
   });
 
   @override
@@ -22,6 +23,18 @@ class SidoRepository extends SidoRepositoryContract {
     throw UnimplementedError();
     
 
+  }
+
+  @override
+  Future<Either<Failure, List<Empleado>>> getAllEmpleados() async {    
+    
+    try {
+      var empleados = await sidoRemoteDataSource.getAllEmpleados();  
+      return Right(empleados);
+    } catch (e) {
+      return Left(ServerFailure(""));
+    }
+    
   }
   
 }

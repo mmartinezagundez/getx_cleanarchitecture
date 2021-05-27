@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:getx_cleanarchitecture/data/datasource/auth/auth_datasource_contract.dart';
 import 'package:getx_cleanarchitecture/data/datasource/remote/sido_remote_datasource_contract.dart';
+import 'package:getx_cleanarchitecture/data/models/sido/empleados/empleado_model.dart';
 
 class SidoRemoteDataSource extends SidoRemoteDataSourceContract {
   
@@ -53,6 +54,25 @@ class SidoRemoteDataSource extends SidoRemoteDataSourceContract {
           // you can resolve a `Response` object eg: return `dio.resolve(response)`.  
         } 
       ));
+
+  }
+
+  @override
+  Future<List<EmpleadoModel>> getAllEmpleados() async {
+
+    List<EmpleadoModel> listaEmpleados = [];       
+    var response = await _dio.get('/empleadosbasic');        
+    List listaResponse = response.data as List;
+    listaResponse.forEach((element) {
+      try {
+        listaEmpleados.add(EmpleadoModel.fromJson(element));  
+      } catch (e) {
+        print(e);
+      }
+      
+    });   
+        
+    return listaEmpleados;
 
   }
 

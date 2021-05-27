@@ -6,6 +6,6 @@ class InitialBinding implements Bindings {
 @override
 void dependencies() {
   Get.lazyPut<HomeController>(() => HomeController());
-  Get.lazyPut<LoginController>(() => LoginController());
+  Get.lazyPut<LoginController>(() => LoginController());    
   }
 }

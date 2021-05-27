@@ -11,7 +11,13 @@ class LoginPageView extends GetView<LoginController> {
     appBar: AppBar(title: Text('LoginPageView')),
 
     body: SafeArea(
-      child: Text('LoginContViewroller'))
+      child: Center(child: ElevatedButton(
+        child: Text('Login'),
+        onPressed: () {
+          controller.login();
+        },
+      ))
+    )
     );
   }
 }

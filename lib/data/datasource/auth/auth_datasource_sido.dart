@@ -51,9 +51,7 @@ class AuthDataSourceSido implements AuthDataSourceContract {
 
     if (this._token == null) {
       this._token = await _secureStorage.read(key: _pref_TOKEN);      
-    }
-        
-    print('TOKEN: ${this._token}');
+    }            
     return this._token;
     
   }
@@ -61,10 +59,9 @@ class AuthDataSourceSido implements AuthDataSourceContract {
   @override
   Future<String?> getUsuarioId() async {
 
-   if (this._usuarioId == null) {
+    if (this._usuarioId == null) {
       this._usuarioId = await _secureStorage.read(key: _pref_USERID);      
-    }
-                
+    }                
     return this._usuarioId;
 
   }
