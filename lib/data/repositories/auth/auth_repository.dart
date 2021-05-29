@@ -35,8 +35,19 @@ class AuthRepository extends AuthRepositoryContract {
   }
 
   @override
-  Future<void> logout() {    
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> logout() async {    
+    
+    try {
+      
+      /* Se hace el login mediante el authRemoteDataSource */
+      await authDataSource.logout();     
+
+      return Right(true);
+    } 
+    on LoginException {
+      return Left(ServerFailure(""));
+    }
+
   }
 
   @override

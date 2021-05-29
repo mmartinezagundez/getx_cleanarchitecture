@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:getx_cleanarchitecture/core/error/exceptions.dart';
 import 'package:getx_cleanarchitecture/core/error/failures.dart';
 import 'package:getx_cleanarchitecture/data/datasource/auth/auth_datasource_contract.dart';
 import 'package:getx_cleanarchitecture/data/datasource/remote/sido_remote_datasource_contract.dart';
@@ -31,8 +32,12 @@ class SidoRepository extends SidoRepositoryContract {
     try {
       var empleados = await sidoRemoteDataSource.getAllEmpleados();  
       return Right(empleados);
-    } catch (e) {
-      return Left(ServerFailure(""));
+    }
+    on LoginRequiredExcepcion {
+      return Left(LoginRequiredFailure(""));
+    }
+    catch (e) {
+      return Left(Failure(""));
     }
     
   }

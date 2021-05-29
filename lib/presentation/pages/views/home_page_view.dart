@@ -13,8 +13,16 @@ class HomePageView extends GetView<HomeController> {
       child: Scaffold(
         appBar: AppBar(title: Text('HomePageView')),
         body: SafeArea(
-          child: ListView(
+          child: ListView(            
             children: [
+              ListTile(              
+                title: Text('Login Page'),
+                subtitle: Text('Login y Logout'),
+                trailing: Icon(Icons.login),
+                onTap: () {
+                  Get.toNamed(Routes.LOGIN);                    
+                },
+              ),
               ListTile(              
                 title: Text('All Empleados'),
                 subtitle: Text('Todos los Empleados'),

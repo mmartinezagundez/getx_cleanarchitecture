@@ -7,6 +7,7 @@ import 'package:getx_cleanarchitecture/data/repositories/sido_repository.dart';
 import 'package:getx_cleanarchitecture/domain/repositories/auth/auth_repository_contract.dart';
 import 'package:getx_cleanarchitecture/domain/repositories/sido_repository_contract.dart';
 import 'package:getx_cleanarchitecture/domain/usecases/auth/auth_login.dart';
+import 'package:getx_cleanarchitecture/domain/usecases/auth/auth_logout.dart';
 import 'package:getx_cleanarchitecture/domain/usecases/auth/get_usuario_contexto.dart';
 import 'package:getx_cleanarchitecture/domain/usecases/get_all_empleados.dart';
 
@@ -25,6 +26,7 @@ Future<void> init() async {
   
   /* Use Cases */
   Get.put<Login>(Login(authRepository: Get.find()), permanent: true);
+  Get.put<Logout>(Logout(authRepository: Get.find()), permanent: true);
   Get.put<GetUsuarioContexto>(GetUsuarioContexto(authRepository: Get.find()), permanent: true);
   Get.put<GetAllEmpleados>(GetAllEmpleados(sidoRepository: Get.find()), permanent: true);
 

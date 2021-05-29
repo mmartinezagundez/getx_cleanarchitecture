@@ -5,7 +5,7 @@ import 'package:getx_cleanarchitecture/presentation/pages/controllers/login_cont
 class InitialBinding implements Bindings {
 @override
 void dependencies() {
-  Get.lazyPut<HomeController>(() => HomeController());
-  Get.lazyPut<LoginController>(() => LoginController());    
+  Get.put<HomeController>(HomeController(), permanent: true);
+  Get.put<LoginController>(LoginController(), permanent: true);    
   }
 }

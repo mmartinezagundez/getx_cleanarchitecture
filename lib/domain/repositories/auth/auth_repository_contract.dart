@@ -9,7 +9,7 @@ abstract class AuthRepositoryContract {
 
   Future<Either<Failure, Usuario>> getUsuarioContexto();
 
-  Future<void> logout();    
+  Future<Either<Failure, bool>> logout();    
     
 
 }
